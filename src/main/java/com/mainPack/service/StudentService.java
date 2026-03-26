@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.mainPack.entity.Student;
 import com.mainPack.repository.StudentRepo;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -35,5 +36,12 @@ public class StudentService {
         }
 
         return "Invalid Password";
+    }
+
+    public List<Student> getAllStudents() {
+        return studentrepo.findAll();
+    }
+    public void deleteStudent(int id) {
+        studentrepo.deleteById(id);
     }
 }
