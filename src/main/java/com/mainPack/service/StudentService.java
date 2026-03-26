@@ -39,4 +39,15 @@ public class StudentService {
 
         return "Invalid Password";
     }
+    
+    public Optional<Student> getProfile(String rollNumber) {
+        return studentrepo.findByRollNumber(rollNumber);
+    } 
+
+    public List<Student> getAllStudents() {
+        return studentrepo.findAll();
+    }
+    public void deleteStudent(int id) {
+        studentrepo.deleteById(id);
+    }
 }
