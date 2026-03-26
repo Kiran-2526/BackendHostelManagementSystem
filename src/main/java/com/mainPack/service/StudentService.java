@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mainPack.entity.Student;
 import com.mainPack.repository.StudentRepo;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -38,8 +39,4 @@ public class StudentService {
 
         return "Invalid Password";
     }
-    
-    public Optional<Student> getProfile(String rollNumber) {
-        return studentrepo.findByRollNumber(rollNumber);
-    } 
 }
