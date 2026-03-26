@@ -11,4 +11,6 @@ import com.mainPack.entity.Student;
 public interface StudentRepo extends JpaRepository<Student, Integer>{
 	
 	Optional<Student> findByRollNumber(String rollNumber);
+	
+	boolean existsByRollNumber(String rollNumber);
 }
