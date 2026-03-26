@@ -50,4 +50,46 @@ public class StudentService {
     public void deleteStudent(int id) {
         studentrepo.deleteById(id);
     }
+    
+    public String modify(Student student) {
+
+        Student existing = studentrepo.findByRollNumber(student.getRollNumber())
+                                      .orElse(null);
+
+        if (existing == null) {
+            return "Student not found";
+        }
+
+        if (student.getFullName() != null) {
+            existing.setFullName(student.getFullName());
+        }
+
+        if (student.getGender() != null) {
+            existing.setGender(student.getGender());
+        }
+
+        if (student.getEmail() != null) {
+            existing.setEmail(student.getEmail());
+        }
+
+        if (student.getPhone() != null) {
+            existing.setPhone(student.getPhone());
+        }
+
+        if (student.getRoomNumber() != null) {
+            existing.setRoomNumber(student.getRoomNumber());
+        }
+
+        if (student.getYear() != 0) {
+            existing.setYear(student.getYear());
+        }
+
+        if (student.getPassword() != null) {
+            existing.setPassword(student.getPassword());
+        }
+
+        studentrepo.save(existing);
+
+        return "Updated Successfully";
+    }
 }
