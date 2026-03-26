@@ -1,17 +1,19 @@
 package com.mainPack.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import com.mainPack.entity.Student;	
 import com.mainPack.service.StudentService;
-import java.util.List;   
-import org.springframework.web.bind.annotation.GetMapping; 
 
 @RestController
 @RequestMapping("/student")
@@ -29,6 +31,12 @@ public class StudentController {
     @PostMapping("/login")
     public String login(@RequestBody Student student) {
         return studentservice.login(student.getRollNumber(),student.getPassword());
+    }
+    
+    @GetMapping("/profile/{rollNumber}")
+    public Student getProfile(@PathVariable String rollNumber) {
+        return studentservice.getProfile(rollNumber)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
     }
     @GetMapping("/all")
     public List<Student> getAllStudents() {

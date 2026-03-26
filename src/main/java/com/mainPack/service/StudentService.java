@@ -1,5 +1,7 @@
 package com.mainPack.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,10 @@ public class StudentService {
 
         return "Invalid Password";
     }
+    
+    public Optional<Student> getProfile(String rollNumber) {
+        return studentrepo.findByRollNumber(rollNumber);
+    } 
 
     public List<Student> getAllStudents() {
         return studentrepo.findAll();
