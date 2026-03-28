@@ -23,4 +23,14 @@ public class WardenController {
     public String login(@RequestBody Warden warden) {
         return wardenservice.login(warden.getWardenId(), warden.getPassword());
     }
+    
+    @GetMapping("/profile/{wardenId}")
+    public Warden getProfile(@PathVariable String wardenId) {
+        return wardenservice.getProfile(wardenId);
+    }
+
+    @PutMapping("/profile/update")
+    public String update(@RequestBody Warden warden) {
+        return wardenservice.modify(warden);
+    }
 }

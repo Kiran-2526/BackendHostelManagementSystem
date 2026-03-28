@@ -55,4 +55,9 @@ public class StudentController {
     public String update(@RequestBody Student student) {
         return studentservice.modify(student);
     }
+    
+    @GetMapping("/count")
+    public long getStudentCount() {
+        return studentservice.getStudentCount();
+    }
 }	

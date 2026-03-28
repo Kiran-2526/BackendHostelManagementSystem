@@ -36,4 +36,44 @@ public class WardenService {
 
 	    return "Invalid Password";
 	}	
+	
+	public Warden getProfile(String wardenId) {
+	    return wardenrepo.findByWardenId(wardenId)
+	            .orElseThrow(() -> new RuntimeException("Warden not found"));
+	}
+
+	public String modify(Warden warden) {
+
+	    Warden existing = wardenrepo.findByWardenId(warden.getWardenId())
+	                                .orElse(null);
+
+	    if (existing == null) {
+	        return "Warden not found";
+	    }
+
+	    if (warden.getFullName() != null) {
+	        existing.setFullName(warden.getFullName());
+	    }
+
+	    if (warden.getGender() != null) {
+	        existing.setGender(warden.getGender());
+	    }
+
+	    if (warden.getEmail() != null) {
+	        existing.setEmail(warden.getEmail());
+	    }
+
+	    if (warden.getPhone() != null) {
+	        existing.setPhone(warden.getPhone());
+	    }
+
+	    if (warden.getPassword() != null) {
+	        existing.setPassword(warden.getPassword());
+	    }
+
+	    wardenrepo.save(existing);
+
+	    return "Updated Successfully";
+	}
+	
 }

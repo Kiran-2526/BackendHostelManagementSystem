@@ -51,6 +51,10 @@ public class StudentService {
         studentrepo.deleteById(id);
     }
     
+    public long getStudentCount() {
+        return studentrepo.count();
+    }
+    
     public String modify(Student student) {
 
         Student existing = studentrepo.findByRollNumber(student.getRollNumber())
