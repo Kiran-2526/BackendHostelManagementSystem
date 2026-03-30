@@ -18,7 +18,7 @@ import com.mainPack.service.StudentService;
 
 @RestController
 @RequestMapping("/student")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class StudentController {
 
     @Autowired

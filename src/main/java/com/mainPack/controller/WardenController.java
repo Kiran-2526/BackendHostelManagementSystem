@@ -8,7 +8,7 @@ import com.mainPack.service.WardenService;
 
 @RestController
 @RequestMapping("/warden")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class WardenController {
 
     @Autowired
