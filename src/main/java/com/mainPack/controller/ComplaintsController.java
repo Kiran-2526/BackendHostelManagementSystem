@@ -3,11 +3,18 @@ package com.mainPack.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.mainPack.entity.Complaints;
-import com.mainPack.service.ComplaintsService;
 import com.mainPack.repository.ComplaintsRepo;
+import com.mainPack.service.ComplaintsService;
 
 @RestController
 @RequestMapping("/student")
@@ -29,7 +36,12 @@ public class ComplaintsController {
 	// ✅ GET all complaints (for frontend display)
 	@GetMapping("/getcomplaints")
 	public List<Complaints> getAllComplaints() {
-		return repo.findAll();
+		return service.getAllComplaints();
+	}
+	
+	@GetMapping("/getcomplaints/{rollNumber}")
+	public List<Complaints> getComplaints(@PathVariable String rollNumber){
+	    return service.getByRoll(rollNumber);
 	}
 	
 	@PostMapping("/updateStatus/{id}")
@@ -50,4 +62,9 @@ public class ComplaintsController {
 	    repo.deleteById(id);
 	    return "Deleted Successfully";
 	}
+	
+//	@GetMapping("countcomplaints")
+//	public long countComplaints() {
+//		return service.count();
+//	}
 }

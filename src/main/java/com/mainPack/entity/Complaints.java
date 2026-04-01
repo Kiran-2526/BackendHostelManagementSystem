@@ -19,9 +19,7 @@ public class Complaints {
 	private String roomNumber;   // ✅ FIXED (String)
 	private String fullName;     // ✅ FIXED (String)
 	private String status = "Pending";
-
-	// GETTERS & SETTERS
-
+	
 	public int getCid() {
 		return cid;
 	}

@@ -1,5 +1,7 @@
 package com.mainPack.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,17 @@ public class ComplaintsService {
 	
 	public Complaints postComplaints(Complaints complaint) {
 		return repo.save(complaint);
+	}
+	
+	public List<Complaints> getByRoll(String rollNumber){
+	    return repo.findByRollNumber(rollNumber);
+	}
+	
+	public List<Complaints> getAllComplaints() {
+		return repo.findAll();
+	}
+	
+	public long count() {
+		return repo.count();
 	}
 }
