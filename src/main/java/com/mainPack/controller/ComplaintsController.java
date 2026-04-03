@@ -63,8 +63,8 @@ public class ComplaintsController {
 	    return "Deleted Successfully";
 	}
 	
-//	@GetMapping("countcomplaints")
-//	public long countComplaints() {
-//		return service.count();
-//	}
+	@GetMapping("countcomplaints/{rollNumber}")
+	public List<Complaints> countComplaints(@PathVariable String rollNumber) {
+		return service.getByRoll(rollNumber);
+	}
 }

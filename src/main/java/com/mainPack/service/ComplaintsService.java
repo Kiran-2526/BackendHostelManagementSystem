@@ -25,8 +25,4 @@ public class ComplaintsService {
 	public List<Complaints> getAllComplaints() {
 		return repo.findAll();
 	}
-	
-	public long count() {
-		return repo.count();
-	}
 }

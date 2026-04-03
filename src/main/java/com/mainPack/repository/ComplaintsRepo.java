@@ -9,4 +9,5 @@ import com.mainPack.entity.Complaints;
 public interface ComplaintsRepo extends JpaRepository<Complaints, Integer>{
 	
 	List<Complaints> findByRollNumber(String rollNumber);
+	
 }
