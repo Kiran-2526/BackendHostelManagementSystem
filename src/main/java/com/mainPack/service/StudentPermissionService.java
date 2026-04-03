@@ -48,4 +48,7 @@ public class StudentPermissionService {
         }
         return null;
     }
+    public void delete(int id) {
+        repo.deleteById(id);
+    }
 }

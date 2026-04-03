@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,17 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mainPack.entity.StudentPermission;
 import com.mainPack.service.StudentPermissionService;
-
-@CrossOrigin(origins = "*")
-@RequestMapping
 @RestController
+@RequestMapping("/permission")
+@CrossOrigin(origins = "*")
 public class StudentPermissionController {
 
 	@Autowired
 	StudentPermissionService service;
 	
 	// Student request
-    @PostMapping("/student/request-permission")
+    @PostMapping("/request")
     public StudentPermission request(@RequestBody StudentPermission p) {
         return service.requestPermission(p);
     }
@@ -36,20 +36,25 @@ public class StudentPermissionController {
     }
 
     // Student own requests
-    @GetMapping("/{roll}")
+    @GetMapping("/student/{roll}")
     public List<StudentPermission> getByRoll(@PathVariable String roll) {
         return service.getByRoll(roll);
     }
 
     // Approve
-    @PutMapping("/warden/approve/{id}")
+    @PutMapping("/approve/{id}")
     public StudentPermission approve(@PathVariable int id) {
         return service.approve(id);
     }
 
     // Return
-    @PutMapping("/warden/return/{id}")
+    @PutMapping("/return/{id}")
     public StudentPermission returnBack(@PathVariable int id) {
         return service.markReturned(id);
+    }
+    @DeleteMapping("/delete/{id}")
+    public String deletePermission(@PathVariable int id) {
+        service.delete(id);
+        return "Deleted Successfully";
     }
 }
