@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.mainPack.entity.StudentPermission;
 import com.mainPack.repository.StudentPermissionRepo;
 
+
+
 @Service
 public class StudentPermissionService {
 	
